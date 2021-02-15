@@ -24,7 +24,9 @@ $vi config.json
 
 "mysecretkey" : "",
 
-"myamiid" : ""
+"myamiid" : "",
+
+"mykeypair" : "",
 
 }
 
