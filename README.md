@@ -20,16 +20,13 @@ $vi config.json
 
 "myregion" : "us-east-1",
 
-"myaccesskey" : "",
-
-"mysecretkey" : "",
-
 "myamiid" : "",
 
 "mykeypair" : "",
 
 }
 
+$aws configure
 
 $terraform init .
 
