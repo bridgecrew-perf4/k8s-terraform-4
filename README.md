@@ -10,9 +10,9 @@ Pre-Requisites
 Execution Flow
 =====================
 
-$git clone https://github.com/krishnamaram2/terraform.git
+$git clone https://github.com/cloudstones/k8s-terraform.git
 
-$cd infrastructure-manager/src
+$cd k8s-terratform/k8s
 
 $vi config.json
 
