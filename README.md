@@ -1,3 +1,4 @@
+https://learn.hashicorp.com/tutorials/terraform/eks
 https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest
 
 Project Title
