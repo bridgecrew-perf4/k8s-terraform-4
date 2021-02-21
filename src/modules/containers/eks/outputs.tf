@@ -85,7 +85,6 @@ output "workers_asg_arns" {
   description = "IDs of the autoscaling groups containing workers."
   value = concat(
     aws_autoscaling_group.workers.*.arn,
-    aws_autoscaling_group.workers_launch_template.*.arn,
   )
 }
 
@@ -93,7 +92,6 @@ output "workers_asg_names" {
   description = "Names of the autoscaling groups containing workers."
   value = concat(
     aws_autoscaling_group.workers.*.id,
-    aws_autoscaling_group.workers_launch_template.*.id,
   )
 }
 
@@ -110,20 +108,8 @@ output "workers_default_ami_id" {
   value       = data.aws_ami.eks_worker.id
 }
 
-output "workers_launch_template_ids" {
-  description = "IDs of the worker launch templates."
-  value       = aws_launch_template.workers_launch_template.*.id
-}
 
-output "workers_launch_template_arns" {
-  description = "ARNs of the worker launch templates."
-  value       = aws_launch_template.workers_launch_template.*.arn
-}
 
-output "workers_launch_template_latest_versions" {
-  description = "Latest versions of the worker launch templates."
-  value       = aws_launch_template.workers_launch_template.*.latest_version
-}
 
 output "worker_security_group_id" {
   description = "Security group ID attached to the EKS workers."
@@ -134,7 +120,6 @@ output "worker_iam_instance_profile_arns" {
   description = "default IAM instance profile ARN for EKS worker groups"
   value = concat(
     aws_iam_instance_profile.workers.*.arn,
-    aws_iam_instance_profile.workers_launch_template.*.arn
   )
 }
 
@@ -142,54 +127,9 @@ output "worker_iam_instance_profile_names" {
   description = "default IAM instance profile name for EKS worker groups"
   value = concat(
     aws_iam_instance_profile.workers.*.name,
-    aws_iam_instance_profile.workers_launch_template.*.name
   )
 }
 
-output "worker_iam_role_name" {
-  description = "default IAM role name for EKS worker groups"
-  value = coalescelist(
-    aws_iam_role.workers.*.name,
-    data.aws_iam_instance_profile.custom_worker_group_iam_instance_profile.*.role_name,
-    data.aws_iam_instance_profile.custom_worker_group_launch_template_iam_instance_profile.*.role_name,
-    [""]
-  )[0]
-}
-
-output "worker_iam_role_arn" {
-  description = "default IAM role ARN for EKS worker groups"
-  value = coalescelist(
-    aws_iam_role.workers.*.arn,
-    data.aws_iam_instance_profile.custom_worker_group_iam_instance_profile.*.role_arn,
-    data.aws_iam_instance_profile.custom_worker_group_launch_template_iam_instance_profile.*.role_arn,
-    [""]
-  )[0]
-}
-
-output "fargate_profile_ids" {
-  description = "EKS Cluster name and EKS Fargate Profile names separated by a colon (:)."
-  value       = module.fargate.fargate_profile_ids
-}
-
-output "fargate_profile_arns" {
-  description = "Amazon Resource Name (ARN) of the EKS Fargate Profiles."
-  value       = module.fargate.fargate_profile_arns
-}
-
-output "fargate_iam_role_name" {
-  description = "IAM role name for EKS Fargate pods"
-  value       = module.fargate.iam_role_name
-}
-
-output "fargate_iam_role_arn" {
-  description = "IAM role ARN for EKS Fargate pods"
-  value       = module.fargate.iam_role_arn
-}
-
-output "node_groups" {
-  description = "Outputs from EKS node groups. Map of maps, keyed by var.node_groups keys"
-  value       = module.node_groups.node_groups
-}
 
 output "security_group_rule_cluster_https_worker_ingress" {
   description = "Security group rule responsible for allowing pods to communicate with the EKS cluster API."

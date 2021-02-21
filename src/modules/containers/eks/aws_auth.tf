@@ -5,7 +5,6 @@ locals {
     for index in range(0, var.create_eks ? local.worker_group_launch_template_count : 0) : {
       worker_role_arn = "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:role/${element(
         coalescelist(
-          aws_iam_instance_profile.workers_launch_template.*.role,
           data.aws_iam_instance_profile.custom_worker_group_launch_template_iam_instance_profile.*.role_name,
           [""]
         ),
@@ -42,8 +41,6 @@ locals {
     for role in concat(
       local.auth_launch_template_worker_roles,
       local.auth_worker_roles,
-      module.node_groups.aws_auth_roles,
-      module.fargate.aws_auth_roles,
     ) :
     {
       # Work around https://github.com/kubernetes-sigs/aws-iam-authenticator/issues/153
@@ -91,3 +88,4 @@ resource "kubernetes_config_map" "aws_auth" {
     mapAccounts = yamlencode(var.map_accounts)
   }
 }
+

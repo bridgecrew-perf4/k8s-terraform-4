@@ -180,11 +180,12 @@ resource "aws_launch_configuration" "workers" {
     aws_iam_instance_profile.workers.*.id,
     data.aws_iam_instance_profile.custom_worker_group_iam_instance_profile.*.name,
   )[count.index]
-  image_id = lookup(
-    var.worker_groups[count.index],
-    "ami_id",
-    lookup(var.worker_groups[count.index], "platform", local.workers_group_defaults["platform"]) == "windows" ? local.default_ami_id_windows : local.default_ami_id_linux,
-  )
+  #image_id = lookup(
+  #  var.worker_groups[count.index],
+  #  "ami_id",
+   # lookup(var.worker_groups[count.index], "platform", local.workers_group_defaults["platform"]) == "windows" ? local.default_ami_id_windows : local.default_ami_id_linux,
+  #)
+   image_id = "ami-07331e0b5765e6fb6"
   instance_type = lookup(
     var.worker_groups[count.index],
     "instance_type",
