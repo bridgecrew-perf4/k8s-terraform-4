@@ -22,4 +22,4 @@ $terraform apply .
 
 configure kubectl
 
-aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+$aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
