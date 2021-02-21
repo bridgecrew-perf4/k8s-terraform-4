@@ -16,6 +16,10 @@ $git clone https://github.com/cloudstones/k8s-terraform.git
 
 $cd k8s-terratform/src
 
+chnage custome AMI in worker.tf file
+
+image_id =""
+
 $terraform init .
 
 $terraform apply .
