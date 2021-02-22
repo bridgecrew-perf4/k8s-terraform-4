@@ -18,6 +18,8 @@ $cd k8s-terratform/src
 
 chnage custome AMI in worker.tf file
 
+$vi modules/containers/eks/workers.tf
+
 image_id =""
 
 $terraform init .
