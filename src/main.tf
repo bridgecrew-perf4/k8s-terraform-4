@@ -2,13 +2,14 @@
 ######################################################################################
 #####  VPC module                           ##########################
 ######################################################################################
-variable "region" {
-  default     = "us-east-1"
-  description = "AWS region"
-}
+#variable "region" {
+#  default     = "us-east-1"
+#  description = "AWS region"
+#}
 
 provider "aws" {
-  region = "us-east-1"
+  region = "${var.myregion}"
+  shared_credentials_file = "/home/centos/.aws/credentials"
 }
 
 data "aws_availability_zones" "available" {}
