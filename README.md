@@ -22,9 +22,15 @@ $vi modules/containers/eks/workers.tf
 
 image_id =""
 
+$vi k8s-terratform/src/config.json 
+
+"myregion" : "",
+
 $terraform init .
 
-$terraform apply .
+$terraform validate -var-file=config.json .
+
+$terraform apply -var-file=config.json .
 
 configure kubectl
 
