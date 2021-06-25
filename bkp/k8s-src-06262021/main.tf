@@ -1,10 +1,15 @@
 
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
-}
+######################################################################################
+#####  VPC module                           ##########################
+######################################################################################
+#variable "region" {
+#  default     = "us-east-1"
+#  description = "AWS region"
+#}
 
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
+provider "aws" {
+  region = "${var.myregion}"
+  shared_credentials_file = "/home/centos/.aws/credentials"
 }
 
 data "aws_availability_zones" "available" {}
@@ -17,7 +22,7 @@ resource "random_string" "suffix" {
   length  = 8
   special = false
 }
-################# Importing  VPC module    ##########################
+
 module "vpc" {
   source  = "./modules/networking/vpc"
 #  version = "2.66.0"
@@ -45,9 +50,9 @@ module "vpc" {
     "kubernetes.io/role/internal-elb"             = "1"
   }
 }
-
-
-####################### Importing EKS module ################################
+######################################################################################
+#####  EKS module                           ##########################
+######################################################################################
 module "eks" {
   source          = "./modules/containers/eks"
   cluster_name    = local.cluster_name
@@ -83,3 +88,12 @@ module "eks" {
     },
   ]
 }
+
+data "aws_eks_cluster" "cluster" {
+  name = module.eks.cluster_id
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks.cluster_id
+}
+
