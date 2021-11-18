@@ -28,6 +28,9 @@ vpc_id = aws_vpc.myvpc.id
 cidr_block = "10.0.1.0/24"
 tags= {
 "Name" = "publicsubnet1"
+"kubernetes.io/cluster/${var.cluster_name}" = "shared"
+"kubernetes.io/role/elb" = 1
+
 }
 }
 
@@ -55,6 +58,9 @@ availability_zone = "us-east-1b"
 cidr_block = "10.0.2.0/24"
 tags= {
 "Name" = "publicsubnet2"
+"kubernetes.io/cluster/${var.cluster_name}" = "shared"
+"kubernetes.io/role/elb" = 1
+
 }
 }
 
