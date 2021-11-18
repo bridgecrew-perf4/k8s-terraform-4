@@ -49,6 +49,10 @@ configure kubectl
 
 $aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
 
+or
+
+ aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name myeks --alias myeks
+
 
 # Issues
 terraform apply -var-file=config.json .
