@@ -6,7 +6,19 @@ Terraform is used to provision and manage IT Infrastructure
 
 Pre-Requisites
 ============================
+Step 1: Install AWS CLI
 
+sudo yum install git -y && sudo yum install wget -y && sudo yum install unzip -y
+
+sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+sudo unzip awscliv2.zip
+
+sudo ./aws/install
+
+Step 2: Install kubectl
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 
 Execution Flow
@@ -37,6 +49,4 @@ configure kubectl
 
 $aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
 
-install kubectl
 
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
