@@ -1,8 +1,8 @@
 
 resource "aws_autoscaling_group" "workers" {
   min_size = "1"
-  desired_capacity = "1"
-  max_size = "1"
+  desired_capacity = "2"
+  max_size = "3"
  # target_group_arns = ""
   launch_configuration = aws_launch_configuration.workers.id
   vpc_zone_identifier = var.private_subnets
@@ -35,7 +35,7 @@ resource "aws_launch_configuration" "workers" {
   image_id = "ami-04a9624bc6addb65f"
   instance_type = "t2.medium"
   
-  key_name = "ohio"
+  key_name = "virginia"
   user_data = base64encode(local.userdata)
 
 
