@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "workers" {
 resource "aws_launch_configuration" "workers" {
   security_groups = [var.workers-sg]
   iam_instance_profile = var.iam-instance-profile-for-workers
-  image_id = "ami-04a9624bc6addb65f"
+  image_id = "ami-0df4b08016fbd820d"
   instance_type = "t2.medium"
   
   key_name = "virginia"
