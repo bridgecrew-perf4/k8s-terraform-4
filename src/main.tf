@@ -1,6 +1,7 @@
 ################# Importing  VPC module    ##########################
 module "vpc" {
   source  = "./modules/networking/vpc"
+  cluster_name    = "myeks"
 }
 ################# Importing  Security module    ##########################
 module "security" {
