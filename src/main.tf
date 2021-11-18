@@ -12,6 +12,9 @@ module "security" {
 ####################### Importing EKS module ################################
 module "eks" {
   source          = "./modules/containers/eks"
+  myinstancetype = var.myinstancetype
+  myamiid  = var.myamiid
+  mykeypair = var.mykeypair
   cluster_name    = "myeks"
   cluster_version = "1.18"
   vpc_id = module.vpc.vpc_id
