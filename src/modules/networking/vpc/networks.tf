@@ -80,7 +80,7 @@ subnet_id = aws_subnet.publicsubnet2.id
 
 
 resource "aws_subnet" "privatesubnet1"{
-availability_zone = "us-east-1c"
+availability_zone = "us-east-1a"
 vpc_id = aws_vpc.myvpc.id
 cidr_block = "10.0.3.0/24"
 tags = {
@@ -108,7 +108,7 @@ subnet_id = aws_subnet.privatesubnet1.id
 
 
 resource "aws_subnet" "privatesubnet2"{
-availability_zone = "us-east-1d"
+availability_zone = "us-east-1b"
 vpc_id = aws_vpc.myvpc.id
 cidr_block = "10.0.4.0/24"
 tags = {
