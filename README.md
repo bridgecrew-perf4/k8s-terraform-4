@@ -21,6 +21,7 @@ chnage custome AMI in worker.tf file
 $vi modules/containers/eks/workers.tf
 
 image_id =""
+key_name =""
 
 $vi k8s-terratform/src/config.json 
 
