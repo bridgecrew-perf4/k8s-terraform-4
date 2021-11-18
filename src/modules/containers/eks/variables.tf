@@ -1,3 +1,15 @@
+variable "myinstancetype"{
+type="string"
+}
+variable "myamiid"{
+type="string"
+}
+variable "mykeypair"{
+type="string"
+}
+
+
+
 variable "iam-instance-profile-for-workers"{
 type="string"
 }
