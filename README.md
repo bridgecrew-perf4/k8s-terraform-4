@@ -55,6 +55,13 @@ or
 
 
 # Issues
+if elb not able to launch then add the below to Public subnets as TAg
+
+kubernetes.io/cluster/<EKS_CLUSTER_NAME> : shared
+
+https://stackoverflow.com/questions/62468996/eks-could-not-find-any-suitable-subnets-for-creating-the-elb
+
+
 https://aws.amazon.com/premiumsupport/knowledge-center/public-load-balancer-private-ec2/
 
 terraform apply -var-file=config.json .
