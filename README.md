@@ -55,6 +55,8 @@ or
 
 
 # Issues
+https://aws.amazon.com/premiumsupport/knowledge-center/public-load-balancer-private-ec2/
+
 terraform apply -var-file=config.json .
 
 issue :Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth": dial tcp [::1]:80: connect: connection refused
