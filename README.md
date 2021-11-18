@@ -46,7 +46,7 @@ or
 
 
 # Issues
-if elb not able to launch then add the below to Public subnets as TAg
+if elb not able to launch then add the below to Public subnets as TAg : https://aws.amazon.com/premiumsupport/knowledge-center/eks-vpc-subnet-discovery/
 
 kubernetes.io/cluster/<EKS_CLUSTER_NAME> : shared
 
