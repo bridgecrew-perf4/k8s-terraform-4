@@ -50,3 +50,13 @@ configure kubectl
 $aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
 
 
+# Issues
+terraform apply -var-file=config.json .
+
+issue :Error: Get "http://localhost/api/v1/namespaces/kube-system/configmaps/aws-auth": dial tcp [::1]:80: connect: connection refused
+
+Solution: terraform state rm module.eks.kubernetes_config_map.aws_auth
+
+Reference: https://github.com/terraform-aws-modules/terraform-aws-eks/issues/911
+
+
